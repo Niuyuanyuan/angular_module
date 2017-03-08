@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<script src="https://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+	<title>angular的模型</title>
+
+	<style>
+		input.ng-invalid {
+		    background-color: lightblue;
+		}
+	</style>
+
+</head>
+<body ng-app="myApp" ng-controller="myCtrl">
+
+
+    <!-- 双向数据绑定 -->
+    <h1>1、</h1>
+	<h2>双向数据绑定</h2>
+	名字：<input type="text" ng-model="name"><br>
+	<h3>你输入了{{name}}</h3>
+	<br><br>
+
+
+    <!-- 验证用户输入 -->
+    <h1>2、</h1>
+	<h2>验证用户输入</h2>
+	<form name="myForm">
+		Email:
+		<input type="email" name="myAddress" ng-model="text">
+		<span ng-show="myForm.myAddress.$error.email">邮箱输入有误！</span>
+	</form>
+
+    <!-- 应用状态 -->
+    <h1>3、</h1>
+	<h2>应用状态</h2>
+	<form name="myForm1" ng-init="myText = 'test@runoob.com'">
+	 Email:
+	 <input type="email" name="myAddress1" ng-model="myText" required>
+	 <h3>状态</h3>
+	 <p>Valid: {{myForm1.myAddress1.$valid}} (如果输入的值是合法的则为true)</p>
+	 <p>Dirty: {{myForm1.myAddress1.$dirty}} (如果值改变则为true)</p>
+	 <p>Touched: {{myForm1.myAddress1.$touched}} (如果通过触屏点击则为true)</p>		
+	</form>
+	<br><br>
+
+
+    <!-- CSS类 -->
+    <h1>4、</h1>
+	<h2>CSS类</h2>
+	<form  name="myForm2">
+	    输入你的名字:
+	    <input name="myName2" ng-model="myText2" required>
+	</form>
+
+	<p>编辑文本域，不同状态背景颜色会发送变化。</p>
+	<p>文本域添加了 required 属性，该值是必须的，如果为空则是不合法的。</p>
+	<br><br>
+
+	<h5><mark>
+	    ng-model 指令根据表单域的状态添加/移除以下类：<br>
+		ng-empty<br>
+		ng-not-empty<br>
+		ng-touched<br>
+		ng-untouched<br>
+		ng-valid<br>
+		ng-invalid<br>
+		ng-dirty<br>
+		ng-pending<br>
+		ng-pristine<br>
+	</mark></h5>
+
+
+    
+
+
+
+
+<script>
+var app = angular.module("myApp",[]);
+app.controller('myCtrl',function($scope){
+	$scope.name = '牛哥';
+})	
+</script>		
+</body>
+</html>
